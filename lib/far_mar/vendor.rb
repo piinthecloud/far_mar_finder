@@ -4,7 +4,7 @@ module FarMar
     attr_accessor :id, :name, :num_employees, :market_id
 
     def initialize(array)
-      @id = array[0]
+      @id = array[0].to_i
       @name = array[1]
       @num_employees = array[2]
       @market_id = array[3]

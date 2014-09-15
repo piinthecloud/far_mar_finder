@@ -23,7 +23,7 @@ module FarMar
     end
 
     def vendors
-      CSV.read("./support/vendors.csv").find_all {|m| m[-1] == @id}
+      FarMar::Vendor.all.find_all {|m| m.id == @id}
     end
 
   end
