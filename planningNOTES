@@ -1,0 +1,7 @@
+Monday:
+- Passed all tests for market
+- set up self.all for all classes
+- Changed self.find methods in all Classes to match the one in market.rb
+
+Future:
+ - Pass tests for product, sale, vendor

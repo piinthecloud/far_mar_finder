@@ -7,7 +7,7 @@ module FarMar
       @id = array[0].to_i
       @name = array[1]
       @num_employees = array[2]
-      @market_id = array[3]
+      @market_id = array[3].to_i
     end
 
     def self.all
@@ -15,7 +15,7 @@ module FarMar
     end
 
     def self.find(id)
-      @@csv.find { |m| m[0] == id }
+      self.all.find {|m| m.id == id.to_i}
     end
   end
 end

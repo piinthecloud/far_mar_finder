@@ -4,9 +4,9 @@ module FarMar
     attr_accessor :id, :name, :vendor_id
 
     def initialize(array)
-      @id = array[0]
+      @id = array[0].to_i
       @name = array[1]
-      @vendor_id = array[2]
+      @vendor_id = array[2].to_i
     end
 
     def self.all
@@ -14,7 +14,7 @@ module FarMar
     end
 
     def self.find(id)
-      @@csv.find { |m| m[0] == id }
+      self.all.find {|m| m.id == id.to_i}
     end
   end
 end
