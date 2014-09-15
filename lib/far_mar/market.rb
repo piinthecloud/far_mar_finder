@@ -4,7 +4,7 @@ module FarMar
     attr_accessor :id, :name, :address, :city, :county, :state, :zip
 
     def initialize(array)
-      @id = array[0]
+      @id = array[0].to_i
       @name = array[1]
       @address = array[2]
       @city = array[3]
@@ -18,7 +18,8 @@ module FarMar
     end
 
     def self.find(id)
-      @@csv.find {|m| m[0] == id}
+      newobject = @@csv.find {|m| m[0].to_i == id.to_i}
+      Market.new(newobject)
     end
 
     def vendors
