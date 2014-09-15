@@ -20,5 +20,10 @@ module FarMar
     def self.find(id)
       @@csv.find {|m| m[0] == id}
     end
+
+    def vendors
+      CSV.read("./support/vendors.csv").find_all {|m| m[-1] == @id}
+    end
+
   end
 end
