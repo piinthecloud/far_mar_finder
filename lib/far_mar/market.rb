@@ -18,8 +18,7 @@ module FarMar
     end
 
     def self.find(id)
-      newobject = @@csv.find {|m| m[0].to_i == id.to_i}
-      Market.new(newobject)
+      self.all.find {|m| m.id == id.to_i}
     end
 
     def vendors
