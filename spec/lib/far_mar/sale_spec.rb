@@ -18,6 +18,12 @@ describe FarMar::Sale do
       expect(FarMar::Sale).to respond_to :between
     end
 
+#Added to test for self.between method
+    it "'between' should return" do
+      expect(FarMar::Sale.between("2013-11-09T19:00:48-08:00", "2013-11-09T19:04:08-08:00").count).to eq 3
+    end
+
+
   end
 
   describe "attributes" do
