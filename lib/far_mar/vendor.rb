@@ -15,11 +15,11 @@ module FarMar
     end
 
     def self.find(id)
-      self.all.find {|m| m.id == id.to_i}
+      self.all.find { |m| m.id == id.to_i }
     end
 
     def self.by_market(market_id)
-
+      self.all.find_all { |m| m.market_id == market_id }
     end
 
     def market
@@ -27,15 +27,14 @@ module FarMar
     end
 
     def products
-      FarMar::Product.all.find_all {|m| m.vendor_id == @id}
+      FarMar::Product.all.find_all { |m| m.vendor_id == @id }
     end
 
     def sales
-      FarMar::Sale.all.find_all {|m| m.vendor_id == @id}
+      FarMar::Sale.all.find_all { |m| m.vendor_id == @id }
     end
 
     def revenue
-      sales = FarMar::Sale.all.find_all {|m| m.vendor_id == @id}
       total = 0
       sales.each { |sale| total += sale.amount }
       return total

@@ -15,13 +15,13 @@ describe FarMar::Vendor do
       expect(FarMar::Vendor).to respond_to :find
     end
 
-    # it "responds to 'by_market'" do
-    #   expect(FarMar::Vendor).to respond_to :by_market
-    # end
-    #
-    # it "find the first vendor by market 1" do
-    #   expect(FarMar::Vendor.by_market(100).first.name).to eq "Schiller-Ledner"
-    # end
+    it "responds to 'by_market'" do
+      expect(FarMar::Vendor).to respond_to :by_market
+    end
+
+    it "find the first vendor by market 1" do
+      expect(FarMar::Vendor.by_market(100).first.name).to eq "Schiller-Ledner"
+    end
   end
 
   describe "attributes" do
