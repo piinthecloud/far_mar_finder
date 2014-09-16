@@ -1,6 +1,5 @@
 module FarMar
   class Sale
-    @@csv = CSV.read "./support/sales.csv"
     attr_accessor :id, :amount, :purchase_time, :vendor_id, :product_id
 
     def initialize(array)
@@ -11,8 +10,10 @@ module FarMar
       @product_id = array[4].to_i
     end
 
+    @@csv = CSV.read("./support/sales.csv").collect { |n| Sale.new(n) }
+
     def self.all
-      @@csv.collect { |n| Sale.new(n) }
+      @@csv
     end
 
     def self.find(id)

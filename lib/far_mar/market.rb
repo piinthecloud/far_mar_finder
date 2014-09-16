@@ -1,6 +1,5 @@
 module FarMar
   class Market
-    @@csv = CSV.read "./support/markets.csv"
     attr_accessor :id, :name, :address, :city, :county, :state, :zip
 
     def initialize(array)
@@ -13,8 +12,10 @@ module FarMar
       @zip = array[6]
     end
 
+    @@csv = CSV.read("./support/markets.csv").collect { |n| Market.new(n)}
+
     def self.all
-      @@csv.collect { |n| Market.new(n) }
+      @@csv
     end
 
     def self.find(id)
@@ -49,7 +50,8 @@ module FarMar
       return array.flatten
     end
 
-    def preferred_vendor(date) #date optional
+    def preferred_vendor #(date) #date optional
+      vendors.sort_by { |m| m.revenue}.first
     end
 
     def worst_vendor(date) #date optional
