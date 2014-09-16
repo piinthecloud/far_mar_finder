@@ -21,6 +21,14 @@ module FarMar
       self.all.find {|m| m.id == id.to_i}
     end
 
+    def self.search(search_term)
+      search = search_term.downcase
+      array = []
+      array << self.all.find_all { |market| market.name.downcase.include?(search) }
+      array << FarMar::Vendor.all.find_all { |vendor| vendor.name.downcase.include?(search) }
+      return array.flatten
+    end
+
     def vendors
       FarMar::Vendor.all.find_all {|m| m.market_id == @id}
     end
@@ -32,9 +40,6 @@ module FarMar
         array << collected_products
       end
       return array.flatten
-    end
-
-    def self.search(search_term)
     end
 
     def preferred_vendor(date) #date optional

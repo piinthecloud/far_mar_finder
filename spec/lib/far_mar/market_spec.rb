@@ -2,8 +2,13 @@ require 'spec_helper'
 describe FarMar::Market do
 
   describe "class methods" do
+# added tests for self.search
     it "responds to 'search'" do
       expect(FarMar::Market).to respond_to :search
+    end
+
+    it "'search' should return" do
+      expect(FarMar::Market.search('john').count).to eq 29
     end
 
     it "responds to 'all'" do
