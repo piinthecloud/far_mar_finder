@@ -7,10 +7,18 @@ module FarMar
       @name = array[1]
       @no_of_employees = array[2].to_i
       @market_id = array[3].to_i
-      @revenue = revenue
+      @revenue = revenuenew
     end
 
     @@csv = CSV.read("./support/vendors.csv").collect { |n| Vendor.new(n)}
+
+
+    def revenuenew
+      total = 0
+      sales.each { |sale| total += sale.amount }
+      return total
+    end
+
 
     def self.all
       @@csv
@@ -34,12 +42,6 @@ module FarMar
 
     def sales
       FarMar::Sale.all.find_all { |m| m.vendor_id == @id }
-    end
-
-    def revenue
-      total = 0
-      sales.each { |sale| total += sale.amount }
-      return total
     end
   end
 end
