@@ -2,6 +2,10 @@ require 'spec_helper'
 describe FarMar::Market do
 
   describe "class methods" do
+    it "responds to 'search'" do
+      expect(FarMar::Market).to respond_to :search
+    end
+
     it "responds to 'all'" do
       expect(FarMar::Market).to respond_to :all
     end
@@ -55,5 +59,18 @@ describe FarMar::Market do
     it "finds the vendors" do
       expect(market.vendors.first.id).to eq 1
     end
+
+    it "responds to products" do
+      expect(FarMar::Market.new({})).to respond_to :products
+    end
+
+    it "responds to preferred_vendor" do
+      expect(FarMar::Market.new({})).to respond_to :preferred_vendor
+    end
+
+    it "responds to worst_vendor" do
+      expect(FarMar::Market.new({})).to respond_to :worst_vendor
+    end
+
   end
 end

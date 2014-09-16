@@ -25,5 +25,17 @@ module FarMar
       FarMar::Vendor.all.find_all {|m| m.id == @id}
     end
 
+    def products
+    end
+
+    def self.search(search_term)
+    end
+
+    def preferred_vendor(date) #date optional
+    end
+
+    def worst_vendor(date) #date optional
+    end
+
   end
 end
