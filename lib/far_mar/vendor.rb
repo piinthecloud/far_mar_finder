@@ -1,12 +1,12 @@
 module FarMar
   class Vendor
     @@csv = CSV.read "./support/vendors.csv"
-    attr_accessor :id, :name, :num_employees, :market_id
+    attr_accessor :id, :name, :no_of_employees, :market_id
 
     def initialize(array)
       @id = array[0].to_i
       @name = array[1]
-      @num_employees = array[2]
+      @no_of_employees = array[2].to_i
       @market_id = array[3].to_i
     end
 
@@ -16,6 +16,26 @@ module FarMar
 
     def self.find(id)
       self.all.find {|m| m.id == id.to_i}
+    end
+
+    def self.by_market(market_id)
+
+    end
+
+    def market
+      FarMar::Market.find(@market_id)
+    end
+
+    def products
+
+    end
+
+    def sales
+
+    end
+
+    def revenue
+
     end
   end
 end
