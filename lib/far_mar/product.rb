@@ -30,6 +30,7 @@ module FarMar
     end
 
     def self.by_vendor(vendor_id)
+      self.all.find_all { |m| m.vendor_id == vendor_id }
     end
 
   end
