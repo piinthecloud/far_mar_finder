@@ -64,6 +64,9 @@ describe FarMar::Market do
       expect(FarMar::Market.new({})).to respond_to :products
     end
 
+    it "returns products available at the market"
+
+
     it "responds to preferred_vendor" do
       expect(FarMar::Market.new({})).to respond_to :preferred_vendor
     end

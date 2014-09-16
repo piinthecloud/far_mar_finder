@@ -22,10 +22,16 @@ module FarMar
     end
 
     def vendors
-      FarMar::Vendor.all.find_all {|m| m.id == @id}
+      FarMar::Vendor.all.find_all {|m| m.market_id == @id}
     end
 
     def products
+      array = []
+      vendors.each do |vendor|
+        collected_products = FarMar::Product.all.find_all {|m| m.vendor_id == vendor.id}
+        array << collected_products
+      end
+      return array.flatten
     end
 
     def self.search(search_term)
