@@ -59,13 +59,14 @@ describe FarMar::Market do
     it "finds the vendors" do
       expect(market.vendors.first.id).to eq 1
     end
-
+#added test for products method in markets.rb
     it "responds to products" do
       expect(FarMar::Market.new({})).to respond_to :products
     end
-
-    it "returns products available at the market"
-
+#added test for products method in markets.rb
+    it "returns products available at the market" do
+      expect(market.products.first.id).to eq 1
+    end
 
     it "responds to preferred_vendor" do
       expect(FarMar::Market.new({})).to respond_to :preferred_vendor
