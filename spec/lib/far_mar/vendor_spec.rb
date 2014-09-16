@@ -68,7 +68,7 @@ describe FarMar::Vendor do
     it "has 1 products" do
       expect(vendor.products.count).to eq 1
     end
-
+#added tests to revenue method
     it "responds to :revenue" do
       expect(vendor).to respond_to :revenue
     end

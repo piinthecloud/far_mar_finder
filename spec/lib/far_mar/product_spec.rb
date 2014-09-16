@@ -59,6 +59,14 @@ describe FarMar::Product do
     it "has 1 sales" do
       expect(product.sales.count).to eq 2
     end
+#added tests for number_of_sales methods
+    it "responds to: number_of_sales" do
+      expect(product).to respond_to :number_of_sales
+    end
+
+    it "has 1 sales" do
+      expect(product.number_of_sales).to eq 2
+    end
 
   end
 

@@ -26,6 +26,7 @@ module FarMar
     end
 
     def number_of_sales
+      sales.count
     end
 
     def self.by_vendor(vendor_id)
