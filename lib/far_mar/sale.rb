@@ -28,7 +28,7 @@ module FarMar
     end
 
     def product
-
+      FarMar::Product.find(@product_id)
     end
   end
 end
