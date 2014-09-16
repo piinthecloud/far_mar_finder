@@ -61,13 +61,13 @@ describe FarMar::Vendor do
     #   expect(vendor.sales.count).to eq 7
     # end
     #
-    # it "responds to products" do
-    #   expect(vendor).to respond_to :products
-    # end
-    #
-    # it "has 1 products" do
-    #   expect(vendor.products.count).to eq 1
-    # end
+    it "responds to products" do
+      expect(vendor).to respond_to :products
+    end
+
+    it "has 1 products" do
+      expect(vendor.products.count).to eq 1
+    end
   end
 
 end
