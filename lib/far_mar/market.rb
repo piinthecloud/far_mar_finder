@@ -25,8 +25,15 @@ module FarMar
       search = search_term.downcase
       array = []
       array << self.all.find_all { |market| market.name.downcase.include?(search) }
-      array << FarMar::Vendor.all.find_all { |vendor| vendor.name.downcase.include?(search) }
+      vendors = FarMar::Vendor.all.find_all { |v| v.name.downcase.include?(search) }
+      array << lookup_vendor_markets(vendors)
       return array.flatten
+    end
+
+    def self.lookup_vendor_markets(vendors)
+      vendors.each do |vendor|
+        self.all.find_all { |m| m.id == vendor.market_id  }
+      end
     end
 
     def vendors
