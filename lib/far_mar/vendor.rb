@@ -27,15 +27,18 @@ module FarMar
     end
 
     def products
-      FarMar::Product.all.find_all {|m| m.vendor_id == @market_id}
+      FarMar::Product.all.find_all {|m| m.vendor_id == @id}
     end
 
     def sales
-
+      FarMar::Sale.all.find_all {|m| m.vendor_id == @id}
     end
 
     def revenue
-
+      sales = FarMar::Sale.all.find_all {|m| m.vendor_id == @id}
+      total = 0
+      sales.each { |sale| total += sale.amount }
+      return total
     end
   end
 end
