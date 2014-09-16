@@ -17,6 +17,10 @@ module FarMar
       self.all.find {|m| m.id == id.to_i}
     end
 
+    def self.by_vendor(vendor_id)
+      self.all.find_all { |m| m.vendor_id == vendor_id }
+    end
+
     def vendor
       FarMar::Vendor.find(@vendor_id)
     end
@@ -28,10 +32,5 @@ module FarMar
     def number_of_sales
       sales.count
     end
-
-    def self.by_vendor(vendor_id)
-      self.all.find_all { |m| m.vendor_id == vendor_id }
-    end
-
   end
 end
