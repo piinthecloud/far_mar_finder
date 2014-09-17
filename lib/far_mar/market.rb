@@ -54,7 +54,8 @@ module FarMar
       vendors.max_by { |m| m.revenue}
     end
 
-    def worst_vendor(date) #date optional
+    def worst_vendor #(date) #date optional
+      vendors.min_by { |m| m.revenue}
     end
 
   end

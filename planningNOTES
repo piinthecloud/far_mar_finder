@@ -1,7 +1,29 @@
 Monday:
-- Passed all tests for market
-- set up self.all for all classes
-- Changed self.find methods in all Classes to match the one in market.rb
+ - Passed all tests for Market class
+ - Set up self.all for all classes
+ - Changed self.find methods in all Classes to match the one in market.rb
+
+Tuesday:
+ - Finished Bronze level methods and tests
+ - Made self.all more efficient!
+ - Started Silver level methods for Market class
 
 Future:
- - Pass tests for product, sale, vendor
+ - Silver preferred_vendor(date) is next!
+
+Verifying preferred_vendor notes:
+ - market_id 1's vendors:
+ #<FarMar::Vendor:0x0000010126b658 @id=1, @name="Feil-Farrell", @no_of_employees=8, @market_id=1> REVENUE == 38259
+ #<FarMar::Vendor:0x0000010126b630 @id=2, @name="Hamill, Kilback and Pfeffer", @no_of_employees=5, @market_id=1> REVENUE == 5727
+ #<FarMar::Vendor:0x0000010126b608 @id=3, @name="Breitenberg Inc", @no_of_employees=5, @market_id=1> REVENUE == 40126
+ #<FarMar::Vendor:0x0000010126b4a0 @id=4, @name="Kris and Sons", @no_of_employees=5, @market_id=1> REVENUE == 26866
+ #<FarMar::Vendor:0x0000010126b450 @id=5, @name="Reynolds, Schmitt and Klocko", @no_of_employees=3, @market_id=1> REVENUE == 61749
+ #<FarMar::Vendor:0x0000010126b428 @id=6, @name="Zulauf and Sons", @no_of_employees=8, @market_id=1> REVENUE == 2977
+
+ - market_id 1's preferred vendor:
+ #<FarMar::Vendor:0x0000010126b450 @id=5, @name="Reynolds, Schmitt and Klocko", @no_of_employees=3, @market_id=1>
+
+ - market_id 1's worst vendor:
+ #<FarMar::Vendor:0x00000101b6d8c8 @id=6, @name="Zulauf and Sons", @no_of_employees=8, @market_id=1>
+
+ - So both of these are working! :)
