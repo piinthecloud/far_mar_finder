@@ -43,21 +43,16 @@ module FarMar
     end
 
     def vendor_totals(date, vendor)
-      date = DateTime.parse(date)
-      x = FarMar::Sale.all.find_all {|m| m.vendor_id == vendor.id}
+      date = DateTime.parse(date).day
       sales_array = []
-      x.each do |sale|
-        if date == sale.purchase_time
-          sales_array << sale
-        end
-      end
-
-      total = 0
-      sales_array.each do |sale|
-        total += sale
-      end
-      return total
+      sales.each { |sale| sales_array << sale.amount if date == sale.purchase_time.day }
+      get_total_sum(sales_array)
     end
 
+    def get_total_sum(sales_array)
+      total = 0
+      sales_array.each { |sale| total += sale }
+      return total
+    end
   end
 end

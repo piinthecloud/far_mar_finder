@@ -78,8 +78,12 @@ describe FarMar::Market do
       expect(FarMar::Market.new({})).to respond_to :preferred_vendor
     end
 
-    it "returns preferred_vendor" do
+    it "returns preferred_vendor overall" do
       expect(market.preferred_vendor.name).to eq "Reynolds, Schmitt and Klocko"
+    end
+
+    it "returns preferred_vendor(date)" do
+      expect(market.preferred_vendor("2013-11-10").name).to eq "Breitenberg Inc"
     end
 
 # added tests for worst_vendor
@@ -90,10 +94,5 @@ describe FarMar::Market do
     it "returns worst_vendor" do
       expect(market.worst_vendor.name).to eq "Zulauf and Sons"
     end
-
-    it "returns preferred_vendor(date)" do
-      expect(market.preferred_vendor("2013-11-10").name).to eq "Breitenberg Inc"
-    end
-
   end
 end
