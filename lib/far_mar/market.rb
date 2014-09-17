@@ -73,7 +73,7 @@ module FarMar
     def vendor_daily_revenue(date)
       newsales_ar = []
       vendors.each do |vendor|
-        newsales_ar << [vendor, vendor.vendor_totals(date, vendor)]
+        newsales_ar << [vendor, vendor.vendor_totals(date)]
       end
       return newsales_ar
     end

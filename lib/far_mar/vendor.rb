@@ -60,7 +60,7 @@ module FarMar
       return total
     end
 
-    def vendor_totals(date, vendor)
+    def vendor_totals(date)
       date = DateTime.parse(date).day
       sales_array = []
       sales.each { |sale| sales_array << sale.amount if date == sale.purchase_time.day }
