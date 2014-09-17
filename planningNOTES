@@ -1,3 +1,4 @@
+
 Monday:
  - Passed all tests for Market class
  - Set up self.all for all classes
@@ -9,6 +10,8 @@ Tuesday:
  - Started Silver level methods for Market class
 
 Future:
+ - Bookis mentioned that he never uses class variables...is there a way we can rework @@csv?
+
  - Silver preferred_vendor(date) is next!
 
 Verifying preferred_vendor notes:
