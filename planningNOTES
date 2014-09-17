@@ -30,3 +30,21 @@ Verifying preferred_vendor notes:
  #<FarMar::Vendor:0x00000101b6d8c8 @id=6, @name="Zulauf and Sons", @no_of_employees=8, @market_id=1>
 
  - So both of these are working! :)
+
+
+
+ -vendor 1 sales for 11-10
+ total 6702
+
+ v2 = 0
+
+ vendor 3
+ total 14932
+
+ vendor 4
+ total 12456
+
+vendor5
+total 7459
+
+vendor 6 0

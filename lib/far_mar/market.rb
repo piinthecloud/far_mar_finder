@@ -49,40 +49,28 @@ module FarMar
       end
       return array.flatten
     end
-
-    def preferred_vendor #(date) #date optional
-      vendors.max_by { |m| m.revenue}
-    end
+    #
+    # def preferred_vendor #(date) #date optional
+    #   vendors.max_by { |m| m.revenue}
+    # end
 
     def worst_vendor #(date) #date optional
       vendors.min_by { |m| m.revenue}
     end
 
 
-    def pref_vendor_test(date)
-      newsales_ar = []
-      vendors.each do |vendor|
-        newsales_ar << [vendor, vendor.pref_vendor(date, vendor)]
-      end
-      newsales_ar.max_by {|array| array[1]}
-    end
-
-    def pref_vendor(date, vendor)
-      x = FarMar::Sales.all.find_all {|m| m.vendor_id == vendor.id}
-      sales_array = []
-      x.each do |sale|
-        if date == sale.purchase_time
-          sales_array << sale
+    def preferred_vendor(date=nil)
+      if date
+        newsales_ar = []
+        vendors.each do |vendor|
+          newsales_ar << [vendor, vendor.vendor_totals(date, vendor)]
         end
+        prefvendor = newsales_ar.max_by {|array| array[1]}
+        print prefvendor
+
+      else
+        vendors.max_by { |m| m.revenue}
       end
-
-      total = 0
-      sales_array.each do |sale|
-        total += sale
-      end
-      return total
-
-
     end
   end
 end

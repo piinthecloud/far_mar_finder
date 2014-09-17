@@ -91,8 +91,8 @@ describe FarMar::Market do
       expect(market.worst_vendor.name).to eq "Zulauf and Sons"
     end
 
-    it "returns preferred_vendor (date)" do
-      expect(market.preferred_vendor(date).name).to eq "Reynolds, Schmitt and Klocko"
+    it "returns preferred_vendor(date)" do
+      expect(market.preferred_vendor("2013-11-10").name).to eq "Breitenberg Inc"
     end
 
   end
