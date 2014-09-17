@@ -54,7 +54,7 @@ module FarMar
       if date
         newsales_ar = vendor_daily_revenue(date)
         prefvendor = newsales_ar.max_by {|array| array[1]}
-        prefvendor[0]
+        catch_duplicates(prefvendor, newsales_ar)
       else
         vendors.max_by { |m| m.revenue}
       end
@@ -78,14 +78,14 @@ module FarMar
       return newsales_ar
     end
 
-    def catch_duplicates(worstvendor, newsales_ar)
-      duplicates = newsales_ar.find_all { |sale| sale[1] == worstvendor[1]}
+    def catch_duplicates(minmaxvendor, newsales_ar)
+      duplicates = newsales_ar.find_all { |sale| sale[1] == minmaxvendor[1]}
       if duplicates.length > 1
         duplicate_vendors = []
         duplicates.each { |vendor| duplicate_vendors << vendor[0] }
         return duplicate_vendors
       else
-        worstvendor[0]
+        minmaxvendor[0]
       end
     end
   end
