@@ -31,14 +31,11 @@ module FarMar
       sorted[0..n-1].collect {|o| o[0]}
     end
 
-
-
     def self.most_items(n)
       holding = []
       self.all.each { |vendor| holding << [vendor, vendor.totalsales] }
       sorted = holding.sort_by { |vendor| vendor[1] }.reverse
       sorted[0..n-1].collect {|o| o[0]}
-
     end
 
     def market
