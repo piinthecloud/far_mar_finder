@@ -22,6 +22,19 @@ describe FarMar::Product do
     it "find the first product by market 1" do
       expect(FarMar::Product.by_vendor(1).first.name).to eq "Dry Beets"
     end
+
+#added test for most_revenue method
+    it "responds to 'most_revenue(n)'" do
+      expect(FarMar::Product).to respond_to :most_revenue
+    end
+
+    it "find the correct number of products with 'most_revenue(n)'" do
+      expect(FarMar::Product.most_revenue(5).count).to eq 5
+    end
+
+    it "find the correct name of nth product with 'most_revenue(n)'" do
+      expect(FarMar::Product.most_revenue(5).last.name).to eq "Embarrassed Beef"
+    end
   end
 
   describe "attributes" do

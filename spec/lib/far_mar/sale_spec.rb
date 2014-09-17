@@ -58,7 +58,7 @@ describe FarMar::Sale do
     it "has the vendor" do
       expect(sale.vendor.id).to eq sale.vendor_id
     end
-    
+
     it "responds to product" do
       expect(sale).to respond_to :product
     end

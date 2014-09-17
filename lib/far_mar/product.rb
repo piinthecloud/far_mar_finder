@@ -22,12 +22,25 @@ module FarMar
       self.all.find_all { |m| m.vendor_id == vendor_id }
     end
 
+    def self.most_revenue(n)
+      holding = []
+      self.all.each { |product| holding << [product, product.total_sales] }
+      sorted = holding.sort_by { |product| product[1] }.reverse
+      sorted[0..n-1].collect {|o| o[0]}
+    end
+
     def vendor
       FarMar::Vendor.find(@vendor_id)
     end
 
     def sales
       FarMar::Sale.all.find_all {|m| m.product_id == @id}
+    end
+
+    def total_sales
+      total = 0
+      sales.each { |sale| total += sale.amount }
+      return total
     end
 
     def number_of_sales

@@ -36,6 +36,7 @@ describe FarMar::Vendor do
       expect(FarMar::Vendor.most_revenue(5).last.name).to eq "Cummings, Orn and Roberts"
     end
 
+#added test for most_items method
     it "responds to 'most_items(n)'" do
       expect(FarMar::Vendor).to respond_to :most_items
     end
@@ -44,7 +45,7 @@ describe FarMar::Vendor do
       expect(FarMar::Vendor.most_items(5).count).to eq 5
     end
 
-    it "find the correct number of vendors with 'most_items(n)'" do
+    it "find the correct name of nth vendor with 'most_items(n)'" do
       expect(FarMar::Vendor.most_items(5).last.name).to eq "Nicolas, Cruickshank and Treutel"
     end
 
