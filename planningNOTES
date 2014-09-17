@@ -48,3 +48,8 @@ vendor5
 total 7459
 
 vendor 6 0
+
+
+TOP VENDORS METHOD:
+
+[[#<FarMar::Vendor:0x007fa44b1b2b18 @id=2590, @name="Swaniawski-Schmeler", @no_of_employees=11, @market_id=482>, 123474], [#<FarMar::Vendor:0x007fa44b1b3018 @id=2575, @name="D'Amore, Wunsch and Kerluke", @no_of_employees=3, @market_id=478>, 118516], [#<FarMar::Vendor:0x007fa44b1b1290 @id=2672, @name="Herzog LLC", @no_of_employees=8, @market_id=497>, 118472], [#<FarMar::Vendor:0x007fa44b1b3590 @id=2557, @name="Yost, Greenholt and Casper", @no_of_employees=8, @market_id=476>, 108550], [#<FarMar::Vendor:0x007fa44b1b3428 @id=2561, @name="Cummings, Orn and Roberts", @no_of_employees=11, @market_id=477>, 107516]

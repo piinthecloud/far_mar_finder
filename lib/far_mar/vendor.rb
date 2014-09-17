@@ -1,13 +1,13 @@
 module FarMar
   class Vendor
-    attr_accessor :id, :name, :no_of_employees, :market_id
+    attr_accessor :id, :name, :no_of_employees, :market_id, :revenue
 
     def initialize(array)
       @id = array[0].to_i
       @name = array[1]
       @no_of_employees = array[2].to_i
       @market_id = array[3].to_i
-      # @revenue = revenue
+      #@revenue = revenue
     end
 
     CSV_VENDOR = CSV.read("./support/vendors.csv").collect { |n| Vendor.new(n)}
@@ -23,6 +23,15 @@ module FarMar
     def self.by_market(market_id)
       self.all.find_all { |m| m.market_id == market_id }
     end
+
+    def self.most_revenue(n)
+      holding = []
+      self.all.each { |vendor| holding << [vendor, vendor.revenue] }
+
+      sorted = holding.sort_by { |vendor| vendor[1] }.reverse
+      sorted[0..n-1].collect {|o| o[0]}
+    end
+
 
     def market
       FarMar::Market.find(@market_id)
