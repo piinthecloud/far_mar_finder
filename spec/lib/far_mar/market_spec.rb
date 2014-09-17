@@ -91,8 +91,12 @@ describe FarMar::Market do
       expect(FarMar::Market.new({})).to respond_to :worst_vendor
     end
 
-    it "returns worst_vendor" do
+    it "returns worst_vendor overall" do
       expect(market.worst_vendor.name).to eq "Zulauf and Sons"
+    end
+
+    it "returns worst_vendor(date)" do
+      expect(market.worst_vendor("2013-11-10").count).to eq 2
     end
   end
 end

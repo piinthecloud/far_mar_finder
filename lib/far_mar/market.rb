@@ -50,22 +50,42 @@ module FarMar
       return array.flatten
     end
 
-    def worst_vendor #(date) #date optional
-      vendors.min_by { |m| m.revenue}
-    end
-
     def preferred_vendor(date=nil) # date is option, defaults to nil
       if date
-        newsales_ar = []
-        vendors.each do |vendor|
-          newsales_ar << [vendor, vendor.vendor_totals(date, vendor)]
-        end
-
+        newsales_ar = vendor_daily_revenue(date)
         prefvendor = newsales_ar.max_by {|array| array[1]}
         prefvendor[0]
-
       else
         vendors.max_by { |m| m.revenue}
+      end
+    end
+
+    def worst_vendor(date=nil) # date is option, defaults to nil
+      if date
+        newsales_ar = vendor_daily_revenue(date)
+        worstvendor = newsales_ar.min_by {|array| array[1]}
+        catch_duplicates(worstvendor, newsales_ar)
+      else
+        vendors.min_by { |m| m.revenue}
+      end
+    end
+
+    def vendor_daily_revenue(date)
+      newsales_ar = []
+      vendors.each do |vendor|
+        newsales_ar << [vendor, vendor.vendor_totals(date, vendor)]
+      end
+      return newsales_ar
+    end
+
+    def catch_duplicates(worstvendor, newsales_ar)
+      duplicates = newsales_ar.find_all { |sale| sale[1] == worstvendor[1]}
+      if duplicates.length > 1
+        duplicate_vendors = []
+        duplicates.each { |vendor| duplicate_vendors << vendor[0] }
+        return duplicate_vendors
+      else
+        worstvendor[0]
       end
     end
   end
