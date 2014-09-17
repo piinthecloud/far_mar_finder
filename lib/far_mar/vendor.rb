@@ -10,10 +10,10 @@ module FarMar
       # @revenue = revenue
     end
 
-    @@csv = CSV.read("./support/vendors.csv").collect { |n| Vendor.new(n)}
+    CSV_VENDOR = CSV.read("./support/vendors.csv").collect { |n| Vendor.new(n)}
 
     def self.all
-      @@csv
+      CSV_VENDOR
     end
 
     def self.find(id)

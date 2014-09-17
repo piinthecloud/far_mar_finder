@@ -10,10 +10,10 @@ module FarMar
       @product_id = array[4].to_i
     end
 
-    @@csv = CSV.read("./support/sales.csv").collect { |n| Sale.new(n) }
+    CSV_SALE = CSV.read("./support/sales.csv").collect { |n| Sale.new(n) }
 
     def self.all
-      @@csv
+      CSV_SALE
     end
 
     def self.find(id)

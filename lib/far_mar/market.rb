@@ -12,10 +12,10 @@ module FarMar
       @zip = array[6]
     end
 
-    @@csv = CSV.read("./support/markets.csv").collect { |n| Market.new(n)}
+    CSV_MARKET = CSV.read("./support/markets.csv").collect { |n| Market.new(n)}
 
     def self.all
-      @@csv
+      CSV_MARKET
     end
 
     def self.find(id)
