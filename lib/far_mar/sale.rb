@@ -35,7 +35,7 @@ module FarMar
       if attribute.to_s.include?("id") || attribute.to_s.include?("amount")
         self.all.find { |product| product.send(attribute) == match}
       elsif attribute.to_s.include?("time")
-        self.all.find_all { |product| product.send(attribute).day == DateTime.parse(match).day }
+        self.all.find { |product| product.send(attribute).day == DateTime.parse(match).day }
       else
         self.all.find { |product| product.send(attribute).to_s.downcase.include?(match.to_s.downcase) }
       end
