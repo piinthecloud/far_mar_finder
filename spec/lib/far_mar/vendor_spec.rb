@@ -55,7 +55,7 @@ describe FarMar::Vendor do
     end
 
     it "find the correct total revenue for 'self.revenue(date)'" do
-      expect(FarMar::Vendor.revenue("2013-11-13").count).to eq 3372020
+      expect(FarMar::Vendor.revenue("2013-11-13")).to eq 3372020
     end
   end
 

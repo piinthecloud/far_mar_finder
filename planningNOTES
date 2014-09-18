@@ -57,6 +57,3 @@ TOP VENDORS METHOD:
 
 FarMar::Vendor.revenue("2013-11-13")
  => 3372020
-
- FarMar::Vendor.revenue("2013-11-11")
- => 9101593 
