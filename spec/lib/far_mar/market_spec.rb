@@ -2,6 +2,7 @@ require 'spec_helper'
 describe FarMar::Market do
 
   describe "class methods" do
+
 # added tests for self.search
     it "responds to 'search'" do
       expect(FarMar::Market).to respond_to :search
@@ -21,6 +22,72 @@ describe FarMar::Market do
 
     it "responds to 'find'" do
       expect(FarMar::Market).to respond_to :find
+    end
+
+#added test for find_by_x(match) method
+    it "responds to 'self.find_by(match, attribute)'" do
+      expect(FarMar::Market).to respond_to :find_by
+    end
+
+    it "find the market that matches the id attribute and the match string" do
+      expect(FarMar::Market.find_by(3, "Id").name).to eq "Dolgeville Farmer's Market"
+    end
+
+    it "find the market that matches the name attribute and the match string" do
+      expect(FarMar::Market.find_by("Plaza", "name").name).to eq "Plaza Marketplace"
+    end
+
+    it "find the market that matches the address attribute and the match string" do
+      expect(FarMar::Market.find_by("Parkway", "address").name).to eq "Quincy Farmers Market"
+    end
+
+    it "find the market that matches the city attribute and the match string" do
+      expect(FarMar::Market.find_by("Travelers", "city").name).to eq "TRAVELERS REST COMMUNITY FARMERS MARKET"
+    end
+
+    it "find the market that matches the county attribute and the match string" do
+      expect(FarMar::Market.find_by("Henry", "county").name).to eq "Henry County Farmers Market"
+    end
+
+    it "find the market that matches the state attribute and the match string" do
+      expect(FarMar::Market.find_by("Texas", "state").name).to eq "Farmers Market in Denison"
+    end
+
+    it "find the market that matches the zip attribute and the match string" do
+      expect(FarMar::Market.find_by(5494, "zip").name).to eq "Farmers Market on the Westford Common"
+    end
+#
+# #added test for find_all_by(match, attribute)
+    it "responds to 'self.find_all_by(match, attribute)'" do
+      expect(FarMar::Market).to respond_to :find_all_by
+    end
+
+    it "find the market that matches the id attribute and the match string" do
+      expect(FarMar::Market.find_all_by(450, "Id")[0].name).to eq "Sunblest"
+    end
+
+    it "find the markets that match the name attribute and the match string" do
+      expect(FarMar::Market.find_all_by("Downtown", "name").count).to eq 20
+    end
+
+    it "find the markets that match the address attribute and the match string" do
+      expect(FarMar::Market.find_all_by("Route", "address").count).to eq 4
+    end
+
+    it "find the markets that match the city attribute and the match string" do
+      expect(FarMar::Market.find_all_by("gaylord", "city").count).to eq 2
+    end
+
+    it "find the market that matches the county attribute and the match string" do
+      expect(FarMar::Market.find_all_by("Henry", "county").count).to eq 4
+    end
+
+    it "find the markets that matches the state attribute and the match string" do
+      expect(FarMar::Market.find_all_by("Texas", "state").count).to eq 23
+    end
+
+    it "find the market that matches the zip attribute and the match string" do
+      expect(FarMar::Market.find_all_by(60098, "zip").count).to eq 2
     end
   end
 
@@ -64,6 +131,7 @@ describe FarMar::Market do
     it "finds the vendors" do
       expect(market.vendors.first.id).to eq 1
     end
+
 # added tests for products method in markets.rb
     it "responds to products" do
       expect(FarMar::Market.new({})).to respond_to :products

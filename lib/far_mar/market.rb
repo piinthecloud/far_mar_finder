@@ -43,7 +43,7 @@ module FarMar
     end
 
     def self.find_by_results(match, attribute)
-      if attribute.to_s.include?("id") || attribute.to_s.include?("zip")
+      if attribute.to_s.include?("id")
         self.all.find { |product| product.send(attribute) == match}
       else
         self.all.find { |product| product.send(attribute).to_s.downcase.include?(match.to_s.downcase) }
@@ -60,7 +60,7 @@ module FarMar
     end
 
     def self.find_all_by_results(match, attribute)
-      if attribute.to_s.include?("id") || attribute.to_s.include?("zip")
+      if attribute.to_s.include?("id")
         self.all.find_all { |product| product.send(attribute) == match}
       else
         self.all.find_all { |product| product.send(attribute).to_s.downcase.include?(match.to_s.downcase) }

@@ -24,7 +24,6 @@ describe FarMar::Product do
     end
 
 #added test for find_by_x(match) method
-
     it "responds to 'self.find_by(match, attribute)'" do
       expect(FarMar::Product).to respond_to :find_by
     end
@@ -107,6 +106,7 @@ describe FarMar::Product do
     it "has 1 sales" do
       expect(product.sales.count).to eq 2
     end
+
 #added tests for number_of_sales methods
     it "responds to: number_of_sales" do
       expect(product).to respond_to :number_of_sales
