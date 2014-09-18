@@ -54,17 +54,17 @@ module FarMar
       sales.count
     end
 
-    def revenue
-      total = 0
-      sales.each { |sale| total += sale.amount }
-      return total
-    end
-
-    def vendor_totals(date)
-      date = DateTime.parse(date).day
-      sales_array = []
-      sales.each { |sale| sales_array << sale.amount if date == sale.purchase_time.day }
-      get_total_sum(sales_array)
+    def revenue(date=nil)
+      if date
+        date = DateTime.parse(date).day
+        sales_array = []
+        sales.each { |sale| sales_array << sale.amount if date == sale.purchase_time.day }
+        get_total_sum(sales_array)
+      else
+        total = 0
+        sales.each { |sale| total += sale.amount }
+        return total
+      end
     end
 
     def get_total_sum(sales_array)
