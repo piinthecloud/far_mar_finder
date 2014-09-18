@@ -49,6 +49,14 @@ describe FarMar::Vendor do
       expect(FarMar::Vendor.most_items(5).last.name).to eq "Nicolas, Cruickshank and Treutel"
     end
 
+#added test for self.revenue(date) method
+    it "responds to 'self.revenue(date)'" do
+      expect(FarMar::Vendor).to respond_to :revenue
+    end
+
+    it "find the correct total revenue for 'self.revenue(date)'" do
+      expect(FarMar::Vendor.revenue("2013-11-13").count).to eq 3372020
+    end
   end
 
   describe "attributes" do
