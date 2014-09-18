@@ -41,6 +41,23 @@ describe FarMar::Product do
       expect(FarMar::Product.find_by(999, "vendor_id").name).to eq "Shrill Beets"
     end
 
+#added test for find_all_by(match, attribute)
+    it "responds to 'self.find_all_by(match, attribute)'" do
+      expect(FarMar::Product).to respond_to :find_all_by
+    end
+
+    it "find the product that matches the vendor_id attribute and the match string" do
+      expect(FarMar::Product.find_all_by(10, "vendor_id").count).to eq 5
+    end
+
+    it "find the product that matches the name attribute and the match string" do
+      expect(FarMar::Product.find_all_by("Embarrassed", "NAME").count).to eq 23
+    end
+
+    it "find the product that matches the id attribute and the match string" do
+      expect(FarMar::Product.find_all_by(608, "id")[0].name).to eq "Shrill Beets"
+    end
+
 #added test for most_revenue method
     it "responds to 'most_revenue(n)'" do
       expect(FarMar::Product).to respond_to :most_revenue

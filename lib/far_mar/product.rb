@@ -28,11 +28,15 @@ module FarMar
         puts "Try a different attribute."
       end
     end
-
+#if statement to catch ID nums to have exact match"
     def self.find_all_by(match, attribute)
       attribute = attribute.downcase.to_sym
       if ATTR_ARRAY.include?(attribute)
-        self.all.find_all { |product| product.send(attribute).to_s.downcase.include?(match.to_s.downcase) }
+        if attribute.to_s.include?("id")
+          self.all.find_all { |product| product.send(attribute) == match}
+        else
+          self.all.find_all { |product| product.send(attribute).to_s.downcase.include?(match.to_s.downcase) }
+        end
       else
         puts "Try a different attribute."
       end
