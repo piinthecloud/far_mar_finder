@@ -22,6 +22,52 @@ describe FarMar::Sale do
     it "'between' should return" do
       expect(FarMar::Sale.between("2013-11-09T19:00:48-08:00", "2013-11-09T19:04:08-08:00").count).to eq 3
     end
+
+#added test for find_by_x(match) method
+    it "responds to 'self.find_by(match, attribute)'" do
+      expect(FarMar::Sale).to respond_to :find_by
+    end
+
+    it "find the sale that matches the id attribute and the match string" do
+      expect(FarMar::Sale.find_by(3, "Id").amount).to eq 9588
+    end
+
+    it "find the sale that matches the amount attribute and the match string" do
+      expect(FarMar::Sale.find_by(2262, "amount").id).to eq 2
+    end
+
+    #### DATE TIME TEST SHOULD GO HERE!
+
+    it "find the sale that matches the vendor_id attribute and the match string" do
+      expect(FarMar::Sale.find_by(3, "vendor_id").amount).to eq 9128
+    end
+
+    it "find the sale that matches the product_id attribute and the match string" do
+      expect(FarMar::Sale.find_by(4, "product_id").amount).to eq 9128
+    end
+
+# #added test for find_all_by(match, attribute)
+    it "responds to 'self.find_all_by(match, attribute)'" do
+      expect(FarMar::Sale).to respond_to :find_all_by
+    end
+
+    it "find the sales that match the id attribute and the match string" do
+      expect(FarMar::Sale.find_all_by(3, "Id").count).to eq 1
+    end
+
+    it "find the sales that match the amount attribute and the match string" do
+      expect(FarMar::Sale.find_all_by(9290, "amount").count).to eq 5
+    end
+
+    #### DATE TIME TEST SHOULD GO HERE!
+
+    it "find the sales that match the vendor_id attribute and the match string" do
+      expect(FarMar::Sale.find_all_by(3, "vendor_id").count).to eq 8
+    end
+
+    it "find the sale that matches the product_id attribute and the match string" do
+      expect(FarMar::Sale.find_all_by(4, "product_id").count).to eq 8
+    end
   end
 
   describe "attributes" do
