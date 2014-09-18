@@ -31,6 +31,12 @@ module FarMar
       sorted[0..n-1].collect {|o| o[0]}
     end
 
+    def self.revenue(date)
+      revenue_total = 0
+      self.all.each { |vendor| revenue_total += vendor.revenue(date) }
+      return revenue_total
+    end
+
     def self.most_items(n)
       holding = []
       self.all.each { |vendor| holding << [vendor, vendor.totalsales] }
