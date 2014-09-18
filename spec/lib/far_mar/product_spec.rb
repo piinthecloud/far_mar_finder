@@ -23,6 +23,12 @@ describe FarMar::Product do
       expect(FarMar::Product.by_vendor(1).first.name).to eq "Dry Beets"
     end
 
+#added test for find_by_x(match) method
+
+## put tests here!!!
+
+
+
 #added test for most_revenue method
     it "responds to 'most_revenue(n)'" do
       expect(FarMar::Product).to respond_to :most_revenue
