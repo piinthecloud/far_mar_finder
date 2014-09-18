@@ -1,15 +1,15 @@
 module FarMar
   class Vendor
-    attr_accessor :id, :name, :no_of_employees, :market_id, :revenue
+    attr_accessor :id, :name, :no_of_employees, :market_id
 
     def initialize(array)
       @id = array[0].to_i
       @name = array[1]
       @no_of_employees = array[2].to_i
       @market_id = array[3].to_i
-      #@revenue = revenue
     end
 
+    ATTR_ARRAY = [:id, :name, :no_of_employees, :market_id]
     CSV_VENDOR = CSV.read("./support/vendors.csv").collect { |n| Vendor.new(n)}
 
     def self.all
@@ -19,6 +19,42 @@ module FarMar
     def self.find(id)
       self.all.find { |m| m.id == id.to_i }
     end
+# This is our method for self.find_by_x(match) for the Gold Level
+    def self.find_by(match, attribute)
+      attribute = attribute.downcase.to_sym
+      if ATTR_ARRAY.include?(attribute)
+        self.find_by_results(match, attribute)
+      else
+        puts "Try a different attribute."
+      end
+    end
+
+    def self.find_by_results(match, attribute)
+      if attribute.to_s.include?("id") || attribute.to_s.include?("no_of_employees")
+        self.all.find { |product| product.send(attribute) == match}
+      else
+        self.all.find { |product| product.send(attribute).to_s.downcase.include?(match.to_s.downcase) }
+      end
+    end
+
+
+    def self.find_all_by(match, attribute)
+      attribute = attribute.downcase.to_sym
+      if ATTR_ARRAY.include?(attribute)
+        self.find_all_by_results(match, attribute)
+      else
+        puts "Try a different attribute."
+      end
+    end
+
+    def self.find_all_by_results(match, attribute)
+      if attribute.to_s.include?("id") || attribute.to_s.include?("no_of_employees")
+        self.all.find_all { |product| product.send(attribute) == match}
+      else
+        self.all.find_all { |product| product.send(attribute).to_s.downcase.include?(match.to_s.downcase) }
+      end
+    end
+
 
     def self.by_market(market_id)
       self.all.find_all { |m| m.market_id == market_id }

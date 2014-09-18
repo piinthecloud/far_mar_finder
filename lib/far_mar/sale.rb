@@ -10,6 +10,7 @@ module FarMar
       @product_id = array[4].to_i
     end
 
+    ATTR_ARRAY = [:id, :amount, :purchase_time, :vendor_id, :product_id]
     CSV_SALE = CSV.read("./support/sales.csv").collect { |n| Sale.new(n) }
 
     def self.all
@@ -18,6 +19,42 @@ module FarMar
 
     def self.find(id)
       self.all.find {|m| m.id == id.to_i}
+    end
+
+    # This is our method for self.find_by_x(match) for the Gold Level
+    def self.find_by(match, attribute)
+      attribute = attribute.downcase.to_sym
+      if ATTR_ARRAY.include?(attribute)
+        self.find_by_results(match, attribute)
+      else
+        puts "Try a different attribute."
+      end
+    end
+
+    def self.find_by_results(match, attribute)
+      if attribute.to_s.include?("id")
+        self.all.find { |product| product.send(attribute) == match}
+      else
+        self.all.find { |product| product.send(attribute).to_s.downcase.include?(match.to_s.downcase) }
+      end
+    end
+
+
+    def self.find_all_by(match, attribute)
+      attribute = attribute.downcase.to_sym
+      if ATTR_ARRAY.include?(attribute)
+        self.find_all_by_results(match, attribute)
+      else
+        puts "Try a different attribute."
+      end
+    end
+
+    def self.find_all_by_results(match, attribute)
+      if attribute.to_s.include?("id")
+        self.all.find_all { |product| product.send(attribute) == match}
+      else
+        self.all.find_all { |product| product.send(attribute).to_s.downcase.include?(match.to_s.downcase) }
+      end
     end
 
     def self.between(beginning_time, end_time)
