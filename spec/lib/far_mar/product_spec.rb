@@ -25,9 +25,21 @@ describe FarMar::Product do
 
 #added test for find_by_x(match) method
 
-## put tests here!!!
+    it "responds to 'self.find_by(match, attribute)'" do
+      expect(FarMar::Product).to respond_to :find_by
+    end
 
+    it "find the product that matches the id attribute and the match string" do
+      expect(FarMar::Product.find_by(3, "Id").name).to eq "Heavy Chicken"
+    end
 
+    it "find the product that matches the name attribute and the match string" do
+      expect(FarMar::Product.find_by("Embarrassed", "NAME").name).to eq "Embarrassed Bread"
+    end
+
+    it "find the product that matches the vendor_id attribute and the match string" do
+      expect(FarMar::Product.find_by(999, "vendor_id").name).to eq "Shrill Beets"
+    end
 
 #added test for most_revenue method
     it "responds to 'most_revenue(n)'" do
