@@ -36,7 +36,9 @@ describe FarMar::Sale do
       expect(FarMar::Sale.find_by(2262, "amount").id).to eq 2
     end
 
-    #### DATE TIME TEST SHOULD GO HERE!
+    it "find the sale that matches the purchase_time attribute and the match string" do
+      expect(FarMar::Sale.find_by("2013-11-13", "purchase_time").id).to eq 3
+    end
 
     it "find the sale that matches the vendor_id attribute and the match string" do
       expect(FarMar::Sale.find_by(3, "vendor_id").amount).to eq 9128
@@ -59,7 +61,9 @@ describe FarMar::Sale do
       expect(FarMar::Sale.find_all_by(9290, "amount").count).to eq 5
     end
 
-    #### DATE TIME TEST SHOULD GO HERE!
+    it "find the sales that match the purchase_time attribute and the match string" do
+      expect(FarMar::Sale.find_all_by("2013-11-13", "purchase_time").count).to eq 669
+    end
 
     it "find the sales that match the vendor_id attribute and the match string" do
       expect(FarMar::Sale.find_all_by(3, "vendor_id").count).to eq 8
