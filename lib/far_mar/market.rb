@@ -1,5 +1,5 @@
 module FarMar
-  class Market
+  class Market < FarMar::AwesomeClass
     attr_accessor :id, :name, :address, :city, :county, :state, :zip
 
     def initialize(array)
@@ -13,15 +13,16 @@ module FarMar
     end
 
     ATTR_ARRAY = [:id, :name, :address, :city, :county, :state, :zip]
-    CSV_MARKET = CSV.read("./support/markets.csv").collect { |n| Market.new(n)}
+
+    CSV = CSV.read("./support/markets.csv").collect { |n| Market.new(n)}
 
     def self.all
       CSV_MARKET
     end
-
-    def self.find(id)
-      self.all.find {|m| m.id == id.to_i}
-    end
+    #
+    # def self.find(id)
+    #   self.all.find {|m| m.id == id.to_i}
+    # end
 
     def self.search(search_term)
       search = search_term.downcase

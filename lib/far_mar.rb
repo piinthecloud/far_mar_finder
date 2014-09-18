@@ -2,6 +2,7 @@ require 'csv'
 require 'time'
 
 # This file is to require all of our dependencies (each of the classes we make)
+require_relative 'far_mar/awesome_class'
 require_relative 'far_mar/market'
 require_relative 'far_mar/vendor'
 require_relative 'far_mar/product'
