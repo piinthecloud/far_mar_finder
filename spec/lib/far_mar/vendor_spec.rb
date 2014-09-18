@@ -103,6 +103,11 @@ describe FarMar::Vendor do
     it "has 38259 in revenue" do
       expect(vendor.revenue).to eq 38259
     end
+
+    it "has 38259 in revenue(date)" do
+      expect(vendor.revenue("2013-11-10")).to eq 6702
+    end
+
   end
 
 end
