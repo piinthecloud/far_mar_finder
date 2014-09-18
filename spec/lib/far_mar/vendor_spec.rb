@@ -23,6 +23,48 @@ describe FarMar::Vendor do
       expect(FarMar::Vendor.by_market(100).first.name).to eq "Schiller-Ledner"
     end
 
+#added test for find_by_x(match) method
+    it "responds to 'self.find_by(match, attribute)'" do
+      expect(FarMar::Vendor).to respond_to :find_by
+    end
+
+    it "find the vendor that matches the id attribute and the match string" do
+      expect(FarMar::Vendor.find_by(3, "Id").name).to eq "Breitenberg Inc"
+    end
+
+    it "find the vendor that matches the name attribute and the match string" do
+      expect(FarMar::Vendor.find_by("Zulauf", "NAME").name).to eq "Zulauf and Sons"
+    end
+
+    it "find the vendor that matches the market_id attribute and the match string" do
+      expect(FarMar::Vendor.find_by(12, "market_id").name).to eq "Bernier Inc"
+    end
+
+    it "find the vendor that matches the no_of_employees attribute and the match string" do
+      expect(FarMar::Vendor.find_by(3, "no_of_employees").name).to eq "Reynolds, Schmitt and Klocko"
+    end
+
+# #added test for find_all_by(match, attribute)
+    it "responds to 'self.find_all_by(match, attribute)'" do
+      expect(FarMar::Vendor).to respond_to :find_all_by
+    end
+
+    it "find the vendor that matches the vendor_id attribute and the match string" do
+      expect(FarMar::Vendor.find_all_by(8, "id")[0].name).to eq "Stamm Inc"
+    end
+
+    it "find the vendors that match the name attribute and the match string" do
+      expect(FarMar::Vendor.find_all_by("Parker", "NAME").count).to eq 12
+    end
+
+    it "find the vendors that match the market_id attribute and the match string" do
+      expect(FarMar::Vendor.find_all_by(12, "market_id").count).to eq 3
+    end
+
+    it "find the vendor that matches the no_of_employees attribute and the match string" do
+      expect(FarMar::Vendor.find_all_by(3, "no_of_employees").count).to eq 260
+    end
+
 #added test for most_revenue method
     it "responds to 'most_revenue(n)'" do
       expect(FarMar::Vendor).to respond_to :most_revenue
@@ -103,6 +145,7 @@ describe FarMar::Vendor do
     it "has 1 products" do
       expect(vendor.products.count).to eq 1
     end
+
 #added tests to revenue method
     it "responds to :revenue" do
       expect(vendor).to respond_to :revenue
@@ -115,7 +158,5 @@ describe FarMar::Vendor do
     it "has 38259 in revenue(date)" do
       expect(vendor.revenue("2013-11-10")).to eq 6702
     end
-
   end
-
 end
