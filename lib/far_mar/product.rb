@@ -18,6 +18,15 @@ module FarMar
       self.all.find {|m| m.id == id.to_i}
     end
 
+    def self.find_by(match, attribute)
+      attribute = attribute.downcase.to_sym
+      if [:id, :name, :vendor_id].include?(attribute)
+        self.all.find { |product| product.send(attribute).to_s.downcase.include?(match.to_s.downcase) }
+      else
+        puts "Try a different attribute."
+      end
+    end
+
     def self.by_vendor(vendor_id)
       self.all.find_all { |m| m.vendor_id == vendor_id }
     end

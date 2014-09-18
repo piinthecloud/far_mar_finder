@@ -57,3 +57,7 @@ TOP VENDORS METHOD:
 
 FarMar::Vendor.revenue("2013-11-13")
  => 3372020
+
+
+
+o.value == o.send(:value)
