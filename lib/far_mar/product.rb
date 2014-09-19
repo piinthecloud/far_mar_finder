@@ -2,22 +2,27 @@ module FarMar
   class Product < FarMar::AwesomeClass
     attr_accessor :id, :name, :vendor_id
 
+    def self.setpath
+      "./support/products.csv"
+    end
+
     def initialize(array)
-      @id = array[0].to_i
-      @name = array[1]
+      @id        = array[0].to_i
+      @name      = array[1]
       @vendor_id = array[2].to_i
     end
 
     ATTR_ARRAY = [:id, :name, :vendor_id]
-    CSV = CSV.read("./support/products.csv").collect { |n| Product.new(n) }
 
-    def self.all
-      CSV_PRODUCT
-    end
-
-    # def self.find(id)
-    #   self.all.find {|m| m.id == id.to_i}
+    # CSV = CSV.read("./support/products.csv").collect { |n| Market.new(n)}
+    #
+    # def self.all
+    #   CSV_PRODUCT
     # end
+
+    # # def self.find(id)
+    # #   self.all.find {|m| m.id == id.to_i}
+    # # end
 
 # This is our method for self.find_by_x(match) for the Gold Level
     def self.find_by(match, attribute)

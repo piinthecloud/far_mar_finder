@@ -2,23 +2,27 @@ module FarMar
   class Market < FarMar::AwesomeClass
     attr_accessor :id, :name, :address, :city, :county, :state, :zip
 
+    def self.setpath
+      "./support/markets.csv"
+    end
+
     def initialize(array)
-      @id = array[0].to_i
-      @name = array[1]
-      @address = array[2]
-      @city = array[3]
-      @county = array[4]
-      @state = array[5]
-      @zip = array[6]
+      @id       = array[0].to_i
+      @name     = array[1]
+      @address  = array[2]
+      @city     = array[3]
+      @county   = array[4]
+      @state    = array[5]
+      @zip      = array[6]
     end
 
     ATTR_ARRAY = [:id, :name, :address, :city, :county, :state, :zip]
-
-    CSV = CSV.read("./support/markets.csv").collect { |n| Market.new(n)}
-
-    def self.all
-      CSV_MARKET
-    end
+    #
+    # CSV = CSV.read("./support/markets.csv").collect { |n| Market.new(n)}
+    #
+    # def self.all
+    #   CSV
+    # end
     #
     # def self.find(id)
     #   self.all.find {|m| m.id == id.to_i}

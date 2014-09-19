@@ -2,21 +2,25 @@ module FarMar
   class Sale < FarMar::AwesomeClass
     attr_accessor :id, :amount, :purchase_time, :vendor_id, :product_id
 
+    def self.setpath
+      "./support/sales.csv"
+    end
+
     def initialize(array)
-      @id = array[0].to_i
-      @amount = array[1].to_i
+      @id            = array[0].to_i
+      @amount        = array[1].to_i
       @purchase_time = DateTime.parse(array[2])
-      @vendor_id = array[3].to_i
-      @product_id = array[4].to_i
+      @vendor_id     = array[3].to_i
+      @product_id    = array[4].to_i
     end
 
     ATTR_ARRAY = [:id, :amount, :purchase_time, :vendor_id, :product_id]
-    CSV = CSV.read("./support/sales.csv").collect { |n| Sale.new(n) }
 
-    def self.all
-      CSV_SALE
-    end
     #
+    # def self.all
+    #   CSV_SALE
+    # end
+    # #
     # def self.find(id)
     #   self.all.find {|m| m.id == id.to_i}
     # end

@@ -2,20 +2,22 @@ module FarMar
   class Vendor < FarMar::AwesomeClass
     attr_accessor :id, :name, :no_of_employees, :market_id
 
+    def self.setpath
+      "./support/vendors.csv"
+    end
+
     def initialize(array)
-      @id = array[0].to_i
-      @name = array[1]
+      @id              = array[0].to_i
+      @name            = array[1]
       @no_of_employees = array[2].to_i
-      @market_id = array[3].to_i
+      @market_id       = array[3].to_i
     end
 
     ATTR_ARRAY = [:id, :name, :no_of_employees, :market_id]
-    CSV = CSV.read("./support/vendors.csv").collect { |n| Vendor.new(n)}
-
-    def self.all
-      CSV_VENDOR
-    end
-    #
+    # def self.all
+    #   CSV_VENDOR
+    # end
+    # #
     # def self.find(id)
     #   self.all.find { |m| m.id == id.to_i }
     # end
