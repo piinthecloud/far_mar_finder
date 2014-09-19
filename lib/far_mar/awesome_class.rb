@@ -17,6 +17,5 @@ module FarMar
       CSV.read(self.setpath).collect { |n| self.new(n)}
     end
 
-
   end
 end

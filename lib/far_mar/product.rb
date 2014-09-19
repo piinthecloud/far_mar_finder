@@ -14,16 +14,6 @@ module FarMar
 
     ATTR_ARRAY = [:id, :name, :vendor_id]
 
-    # CSV = CSV.read("./support/products.csv").collect { |n| Market.new(n)}
-    #
-    # def self.all
-    #   CSV_PRODUCT
-    # end
-
-    # # def self.find(id)
-    # #   self.all.find {|m| m.id == id.to_i}
-    # # end
-
 # This is our method for self.find_by_x(match) for the Gold Level
     def self.find_by(match, attribute)
       attribute = attribute.downcase.to_sym
